@@ -6,9 +6,9 @@ import router from "./Router/routerPosts.js";
 const app = express()
 const PORT = process.env.PORT || 3001
 
-const DB_URL = `mongodb+srv://Azat:Azat2006@postsmelentq.s4yj9xd.mongodb.net/?retryWrites=true&w=majority`
+const DB_URL = `mongodb+srv://Azat:Azat2006@cluster0.wjqcnmw.mongodb.net/?retryWrites=true&w=majority`
 
-app.use(cors)
+app.use(cors())
 app.use(express.json())
 app.use("/api", router)
 
