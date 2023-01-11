@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Post = new mongoose.Schema({
+const Todo = new mongoose.Schema({
   author: {
     type: String,
     required: true
@@ -19,4 +19,4 @@ const Post = new mongoose.Schema({
   }
 })
 
-export default mongoose.model("Post", Post)
+export default mongoose.model("Todo", Todo)
