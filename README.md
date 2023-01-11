@@ -20,7 +20,7 @@ All Tech stack on the bottom.
  - POST `/api/todos` - create todo
  - DELETE `/api/todos/id` - delete todo
  - PATCH `/api/todos/id` - update checkbox isDone
- - PATCH `api/todos/todo/id` - change Todo
+ - PATCH `/api/todos/todo/id` - change Todo
 
 ## Download Dependencies
 
