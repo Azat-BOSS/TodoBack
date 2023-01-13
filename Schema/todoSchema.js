@@ -3,20 +3,20 @@ import mongoose from "mongoose";
 const Todo = new mongoose.Schema({
   author: {
     type: String,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   isDone: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 
-export default mongoose.model("Todo", Todo)
+export default mongoose.model("Todo", Todo);
