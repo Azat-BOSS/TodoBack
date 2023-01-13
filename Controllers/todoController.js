@@ -1,19 +1,22 @@
 import Todo from "../Schema/todoSchema.js";
 
 class TodoController {
-  async getPosts(req, res) {
+  async getPostsByUser(req, res) {
     try {
-      const todos = await Todo.find();
+      const id = req.user
+
+      const todos = await Todo.find({user: id})
       return res.json({todos, success: true });
     } catch (error) {
-      res.status(500).json({ success: false });
+      res.status(500).json({ success: false, error });
     }
   }
-  async getPostById(req, res) {
+  async getPostsById(req, res) {
     try {
-      const { id } = req.params;
-      const todo = await Todo.findById(id);
-      return res.json({todo, success: true });
+      const _id = req.params.id
+      console.log(_id)
+      const todo = await Todo.findById({_id: _id})
+      return res.json(todo);
     } catch (error) {
       res.status(500).json({ success: false });
     }
@@ -22,7 +25,8 @@ class TodoController {
   async createPost(req, res) {
     try {
       const { author, title, content } = req.body;
-      const todo = await Todo.create({ author, title, content });
+      const user = req.user
+      const todo = await Todo.create({ author, title, content, user });
       return res.json({todo, success: true });
     } catch (error) {
       res.status(500).json({ success: false });
@@ -41,9 +45,9 @@ class TodoController {
 
   async changeCheck(req, res) {
     try {
-      const { id } = req.params;
+      const _id  = req.params.id;
       const checkBox = req.body;
-      const todo = await Todo.findByIdAndUpdate(id, checkBox, { new: true });
+      const todo = await Todo.findByIdAndUpdate({_id: _id}, checkBox, { new: true });
       return res.json({todo, success: true });
     } catch (error) {
       res.status(500).json({ success: false });
@@ -52,9 +56,9 @@ class TodoController {
 
   async changeTodo(req, res) {
     try {
-      const { id } = req.params;
+      const _id  = req.params.id;
       const dataTodo = req.body;
-      const todo = await Todo.findByIdAndUpdate(id, dataTodo, { new: true });
+      const todo = await Todo.findByIdAndUpdate({_id: _id}, dataTodo, { new: true });
       return res.json({todo, success: true });
     } catch (error) {
       res.status(500).json({ success: false });

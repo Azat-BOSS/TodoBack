@@ -13,7 +13,7 @@ export const authMiddlaware = (req, res, next) => {
       return res.json({ success: false, message: "user doesn't auth", success: false });
     }
     const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decodedToken;
+    req.user = decodedToken.id;
     next();
   } catch (error) {
     res.status(403).json({ message: "user doesn't auth", success: false });

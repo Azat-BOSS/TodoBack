@@ -13,6 +13,11 @@ const Todo = new mongoose.Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "AuthModel",
+    required: true
+  },
   isDone: {
     type: Boolean,
     default: false,
